@@ -1,0 +1,61 @@
+ ── Extracted ML Features ──────────────────────────
+  Name             : XYZ
+  Email            : XYZ@gmail.com
+  Location         : None
+  Experience       : 0.0 yr(s)  [no experience]
+  Education Level  : bachelor
+  # Jobs           : 4
+  # Skills         : 15
+  # Certifications : 0
+  # Projects       : 17
+  Has LinkedIn     : True
+  Has GitHub       : False
+  All Skills       : c|c++|css|data structures|english|html|https|java|javascript|php|python|react|si
+  ────────────────────────────────────────────────────
+
+  🎯  Career Path Predictions for: Hamid Ali
+  ──────────────────────────────────────────────────
+  #1  Full-Stack Developer                [████░░░░░░░░░░░] 4 pts
+       Skills: css, html, javascript, react
+  #2  Frontend Developer                  [████░░░░░░░░░░░] 4 pts
+       Skills: css, html, javascript, react
+  #3  Backend Developer                   [██░░░░░░░░░░░░░] 2 pts
+       Skills: java, python
+  #4  Data Scientist / ML Engineer        [██░░░░░░░░░░░░░] 2 pts
+       Skills: python, sql
+  #5  Embedded / Systems Engineer         [██░░░░░░░░░░░░░] 2 pts
+       Skills: c, c++
+  ──────────────────────────────────────────────────
+
+  ✅  CSV saved → career_results_20260418_022843.csv  (1 row(s), 50 columns)     
+
+  🎉  Done! Open career_results_20260418_022843.csv in pandas / Excel to begin tr       Skills: python, sql
+  #5  Embedded / Systems Engineer         [██░░░░░░░░░░░░░] 2 pts
+       Skills: c, c++
+  ──────────────────────────────────────────────────
+
+  ✅  CSV saved → career_results_20260418_022843.csv  (1 row(s), 50 columns)     
+       Skills: python, sql
+  #5  Embedded / Systems Engineer         [██░░░░░░░░░░░░░] 2 pts
+       Skills: c, c++
+  ──────────────────────────────────────────────────
+
+       Skills: python, sql
+  #5  Embedded / Systems Engineer         [██░░░░░░░░░░░░░] 2 pts
+       Skills: c, c++
+       Skills: python, sql
+  #5  Embedded / Systems Engineer         [██░░░░░░░░░░░░░] 2 pts
+       Skills: python, sql
+       Skills: python, sql
+       Skills: python, sql
+  #5  Embedded / Systems Engineer         [██░░░░░░░░░░░░░] 2 pts
+       Skills: c, c++
+       Skills: python, sql
+  #5  Embedded / Systems Engineer         [██░░░░░░░░░░░░░] 2 pts
+       Skills: python, sql
+       Skills: python, sql
+       Skills: python, sql
+       Skills: python, sql
+  #5  Embedded / Systems Engineer         [██░░░░░░░░░░░░░] 2 pts
+       Skills: c, c++
+  ──────────────────────────────────────────────────
