@@ -1,133 +1,87 @@
-# 🎯 Career Path Detector
+ Career Path Detector
 
-An AI-powered resume parser and career path prediction system.
-Upload a resume (PDF / DOCX / TXT) and get:
-- **Structured data extraction** (skills, experience, education, projects)
-- **Career track prediction** (Full-Stack, ML Engineer, DevOps, etc.)
-- **ML-ready CSV output** for training classifiers
+Resume parser + career prediction tool. Feed it a PDF, DOCX, or TXT resume and it spits out structured data, a predicted career track, and a CSV you can plug straight into a classifier.
 
 ---
 
-## 📁 Project Structure
-
-```
+## Project Structure
 career_path_detector/
 │
-├── main.py                     ← CLI entry point (run this)
+├── main.py                     ← start here
 │
-├── extractor/                  ← Resume text extraction
-│   ├── __init__.py             ← Public API: extract_resume()
-│   ├── text_reader.py          ← PDF / DOCX / TXT → raw text
-│   ├── gemini_parser.py        ← Gemini AI → structured JSON
-│   └── regex_parser.py         ← Offline regex fallback
+├── extractor/                  ← everything to do with reading resumes
+│   ├── init.py
+│   ├── text_reader.py          ← PDF / DOCX / TXT → plain text
+│   ├── gemini_parser.py        ← sends text to Gemini, gets back structured JSON
+│   └── regex_parser.py         ← offline fallback if you don't have an API key
 │
-├── ml/                         ← Machine learning pipeline
-│   ├── __init__.py
-│   ├── career_detector.py      ← Career path scoring & prediction
-│   └── csv_builder.py          ← Flatten resume → ML-ready CSV row
+├── ml/
+│   ├── career_detector.py      ← scores skills against career track profiles
+│   └── csv_builder.py          ← flattens everything into a single CSV row
 │
-├── utils/                      ← Shared utilities
-│   ├── __init__.py
-│   ├── constants.py            ← SKILL_MAP, EXPERIENCE_LEVEL_MAP
-│   ├── cleaner.py              ← Normalize & engineer features
-│   └── terminal.py             ← Colored terminal output
+├── utils/
+│   ├── constants.py            ← skill aliases, experience level thresholds
+│   ├── cleaner.py              ← normalizes skills, engineers features
+│   └── terminal.py             ← colored output helpers
 │
 ├── requirements.txt
 └── README.md
-```
-
 ---
 
-## 🚀 Quick Start
+## Getting Started
 
-### 1. Install dependencies
 ```bash
 pip install -r requirements.txt
 ```
 
-### 2. Get a FREE Gemini API key
-Visit → https://aistudio.google.com/apikey
+Get a free Gemini API key at https://aistudio.google.com/apikey, then:
 
-### 3. Run on a single resume
 ```bash
+# single resume
 python main.py resume.pdf --api-key YOUR_KEY
-```
 
-### 4. Run in batch mode (entire folder)
-```bash
+# whole folder
 python main.py --batch ./resumes/ --output results.csv
-```
 
-### 5. Run offline (no API key — regex fallback)
-```bash
+# no API key — falls back to regex extraction
 python main.py resume.pdf
 ```
 
+You can also set `GEMINI_API_KEY` as an env variable instead of passing it every time.
+
 ---
 
-## 📊 Output CSV Columns
+## Output
 
-| Column | Description |
+Produces a CSV with one row per resume. Key columns:
+
+| Column | What it is |
 |---|---|
-| `top_career_track` | Highest-scoring predicted career path |
-| `career_predictions` | Top 3 predictions (pipe-separated) |
-| `total_experience_years` | Computed years of experience |
-| `experience_level` | entry level / junior / mid level / senior |
-| `num_skills` | Total unique skills detected |
-| `technical_skills` | Pipe-separated technical skills |
-| `all_skills` | All skills combined (for TF-IDF) |
-| `has_github` | 1 if GitHub profile found, else 0 |
+| `top_career_track` | best matching career path |
+| `career_predictions` | top 3, pipe-separated |
+| `total_experience_years` | calculated from job dates |
+| `experience_level` | entry level / junior / mid / senior |
+| `technical_skills` | pipe-separated, ready for TF-IDF |
+| `has_github` | 1 or 0 |
 | `education_level` | bachelor / master / phd / unknown |
 
 ---
 
-## 🤖 Career Tracks Detected
+## Career Tracks
 
-- Full-Stack Developer
-- Frontend Developer
-- Backend Developer
-- Data Scientist / ML Engineer
-- DevOps / Cloud Engineer
-- Mobile Developer
-- Cybersecurity Engineer
-- QA / Test Engineer
-- Embedded / Systems Engineer
-- Business Analyst / Product Manager
+Full-Stack Developer, Frontend Developer, Backend Developer, Data Scientist / ML Engineer, DevOps / Cloud Engineer, Mobile Developer, Cybersecurity Engineer, QA / Test Engineer, Embedded / Systems Engineer, Business Analyst / Product Manager
 
 ---
 
-## 🧠 How It Works
-
-```
-Resume File (PDF/DOCX/TXT)
-        │
-        ▼
- extractor/text_reader.py      ← Extract raw text
-        │
-        ▼
- extractor/gemini_parser.py    ← AI → structured JSON
-   (or regex_parser.py)        ← Offline fallback
-        │
-        ▼
- utils/cleaner.py              ← Normalize skills, compute features
-        │
-        ├──► ml/career_detector.py  ← Predict career paths
-        │
-        └──► ml/csv_builder.py      ← Save ML-ready CSV
-```
-
----
-
-## 📦 Tech Stack
-
-- **Python 3.11+**
-- **Google Gemini 2.0 Flash** (free tier)
-- **pdfplumber / pypdf** for PDF reading
-- **python-docx** for Word documents
-- **pandas** for CSV output
-
----
-
-## 🙋 Author
-
-Built as a final-year CS project for career path detection using AI/ML.
+## How It Works
+resume file
+│
+├─ text_reader.py        extract raw text
+│
+├─ gemini_parser.py      AI → structured JSON  (regex_parser.py if offline)
+│
+├─ cleaner.py            normalize skills, compute features
+│
+├─ career_detector.py    score against track profiles → predictions
+│
+└─ csv_builder.py        write ML-ready CSV
